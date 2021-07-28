@@ -1,6 +1,7 @@
 package com.example.userregistration.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +12,7 @@ import java.util.Collections;
 
 
 @Data
+@NoArgsConstructor
 @Entity
 public class UserAccount implements UserDetails {
 
@@ -34,6 +36,13 @@ public class UserAccount implements UserDetails {
     private Boolean locked = false;
     private Boolean enabled = false;
 
+    public UserAccount(String firstName, String lastName, String email, String password, UserAccountRole userAccountRole) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.userAccountRole = userAccountRole;
+    }
 
     public String getFirstName() {
         return firstName;
